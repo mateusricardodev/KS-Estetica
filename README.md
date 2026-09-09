@@ -138,3 +138,14 @@ porque nada disso foi informado.
 - Nenhuma informação depende só de cor. Todo ícone vem acompanhado de texto ou
   de rótulo acessível.
 - Texto alternativo descritivo em todas as fotos.
+
+## Arquivo do Figma
+
+O sistema visual também está montado no Figma, para quem for produzir peças
+novas da marca (post, story, adesivo, uniforme):
+
+https://www.figma.com/design/lwmMv5I1IiUtOhMGRzSebp
+
+O arquivo tem as 12 cores como variáveis do Figma, os sete estilos de texto em
+Archivo e as três variantes de botão. Os valores são exatamente os mesmos do
+`@theme` em `app/globals.css`. Ao alterar um, altere o outro.
