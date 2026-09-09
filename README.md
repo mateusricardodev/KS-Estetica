@@ -1,151 +1,96 @@
 # KS Estética Automotiva
 
-Landing page da KS Estética Automotiva, em São José dos Campos/SP.
-Objetivo único da página: gerar contato e pedido de orçamento pelo WhatsApp.
+> **Muito além de uma lavagem, cuidamos do seu sonho.**
 
-Next.js 15 (App Router) + React 19 + Tailwind CSS v4 + TypeScript.
+Landing page institucional da **KS Estética Automotiva**, criada para transformar visitas em conversas no WhatsApp. O projeto une uma experiência visual automotiva premium a uma navegação leve, rápida e acessível — com conteúdo, fotos e CTAs pensados para clientes de São José dos Campos/SP.
 
-## Rodar o projeto
+![Next.js](https://img.shields.io/badge/Next.js-15-111111?logo=next.js&logoColor=white)
+![React](https://img.shields.io/badge/React-19-149eca?logo=react&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-3178c6?logo=typescript&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-38bdf8?logo=tailwindcss&logoColor=white)
 
-Precisa de Node.js 18.18 ou mais novo.
+## O projeto
+
+O site foi desenhado para apresentar os serviços reais da estética, valorizar o resultado visual do trabalho e encurtar o caminho até o orçamento. Não há preços, promessas ou informações comerciais inventadas: cada chamada direciona o visitante para um contato direto e contextualizado pelo WhatsApp.
+
+**Acesse:** [repositório no GitHub](https://github.com/mateusricardodev/KS-Estetica) · [Instagram da KS Estética](https://www.instagram.com/ks.estetica_automotiva012?igsh=MTg5Mm53MGJsenZnMg%3D%3D) · [Falar no WhatsApp](https://wa.me/5512988306402)
+
+## Destaques
+
+- Experiência responsiva, pensada primeiro para celular.
+- Header fixo, menu compacto e botão flutuante de WhatsApp.
+- CTAs com mensagens pré-preenchidas por serviço.
+- Grade assimétrica para os sete serviços da empresa.
+- Galeria com fotos reais e lightbox navegável por teclado.
+- Imagens WebP responsivas, com `srcset`, placeholder e dimensões reservadas para evitar saltos de layout.
+- Mapa carregado apenas sob demanda, reduzindo scripts de terceiros no primeiro acesso.
+- SEO completo: metadados, Open Graph, canonical, sitemap e dados estruturados `LocalBusiness`.
+- Movimento discreto e respeito a `prefers-reduced-motion`.
+- Boas práticas de acessibilidade, incluindo foco visível, skip link, contraste alto e textos alternativos descritivos.
+
+## Serviços apresentados
+
+| Serviço | Descrição |
+| --- | --- |
+| Lavagem completa interna e externa | Renovação completa da aparência do veículo. |
+| Higienização interna | Cuidado profundo para mais conforto no interior. |
+| Cristalização de vidro | Proteção e mais visibilidade para os vidros. |
+| Lavagem de motor | Limpeza detalhada do cofre do motor. |
+| Lavagem de chassi | Atenção às áreas inferiores do veículo. |
+| Lavagem detalhada de motocicletas | Cuidado especial em cada parte da moto. |
+| Lavagem de caminhões e guinchos | Soluções para veículos de maior porte. |
+
+## Tecnologias
+
+- [Next.js 15](https://nextjs.org/) com App Router
+- [React 19](https://react.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS 4](https://tailwindcss.com/)
+- [Phosphor Icons](https://phosphoricons.com/)
+
+## Começar localmente
+
+Pré-requisito: Node.js **18.18+**.
 
 ```bash
 npm install
-```
-
-Ambiente de desenvolvimento em http://localhost:3000:
-
-```bash
 npm run dev
 ```
 
-Build de produção e execução local:
+Abra [http://localhost:3000](http://localhost:3000).
+
+Para validar a versão de produção:
 
 ```bash
-npm run build && npm run start
+npm run build
+npm run start
 ```
 
-## Publicar
+## Estrutura do projeto
 
-A página é 100% estática. Funciona em qualquer host.
-
-- **Vercel**: importar o repositório e publicar, sem configuração extra.
-- **Netlify / Cloudflare Pages**: comando `npm run build`, pasta `.next`.
-- **Host estático simples** (GitHub Pages, Hostinger, etc.): adicione
-  `output: "export"` no `next.config.mjs`, rode `npm run build` e publique a
-  pasta `out/`. As fotos já são servidas direto, sem servidor de imagens, então
-  nada quebra nesse modo.
-
-Antes de publicar, troque `site.url` em `lib/site.ts` pelo domínio real. Esse
-valor alimenta a tag canonical, o Open Graph e o `sitemap.xml`.
-
-## Onde mexer
-
-Quase toda alteração de conteúdo acontece em três arquivos:
-
-| Arquivo | O que controla |
-| --- | --- |
-| `lib/site.ts` | Nome, slogan, WhatsApp, Instagram, endereço, links do menu e as mensagens pré-preenchidas do WhatsApp |
-| `lib/servicos.ts` | Os sete serviços: título, descrição, foto, tamanho na grade e o termo que entra na mensagem do WhatsApp |
-| `lib/fotos.ts` | Catálogo de fotos com texto alternativo, dimensões e placeholder. Gerado a partir das fotos originais |
-
-### Trocar o número do WhatsApp
-
-Em `lib/site.ts`, no bloco `whatsapp`. O campo `base` usa o formato
-`https://wa.me/55DDNUMERO`, sem símbolos. Todos os botões da página derivam dele.
-
-### Trocar a cor de destaque
-
-A paleta saiu do próprio logo: fundo azul-petróleo quase preto, traço cromado e
-o azul elétrico do risco de velocidade. Para mudar o destaque na página inteira,
-altere três variáveis em `app/globals.css`, dentro do bloco `@theme`:
-
-```css
---color-marca: #22c9e8;        /* preenchimento dos botões e ícones */
---color-marca-forte: #0fb4d6;  /* estado pressionado */
---color-brilho: #6fe6ff;       /* hover e anel de foco */
-```
-
-Se preferir a marca em vermelho, um conjunto que mantém o contraste mínimo
-exigido (texto quase preto sobre o botão) é `#e8362f`, `#c62a24` e `#ff5a52`.
-
-### Adicionar fotos
-
-1. Coloque os arquivos otimizados em `public/fotos/`, seguindo o padrão de nome
-   `nome-do-servico-N-LARGURA.webp` (larguras 360, 540 e a original).
-2. Acrescente a entrada correspondente em `lib/fotos.ts`, com `alt` descritivo.
-3. Referencie o novo `id` em `lib/servicos.ts` ou na lista `ordem` de
-   `components/Galeria.tsx`.
-
-## Estrutura
-
-```
+```text
 app/
-  layout.tsx      Metadados, SEO, Open Graph, dados estruturados LocalBusiness
-  page.tsx        Montagem das seções
-  globals.css     Tokens de cor, tipografia e as animações da página
-  icon.png        Favicon e ícone de aplicativo
+├── layout.tsx          # Metadados, SEO, Open Graph e LocalBusiness
+├── page.tsx            # Composição das seções da landing page
+└── globals.css         # Tokens, tipografia e animações
+
 components/
-  Cabecalho.tsx   Header fixo, menu compacto no celular, WhatsApp sempre visível
-  Hero.tsx        Primeira dobra
-  Apresentacao.tsx
-  Servicos.tsx    Grade assimétrica de 7 cards, cada um com CTA próprio
-  Galeria.tsx     Grade de 15 fotos com lightbox acessível
-  ChamadaFinal.tsx
-  Localizacao.tsx Endereço, contatos e mapa sob demanda
-  Rodape.tsx
-  BotaoFlutuante.tsx
-  Foto.tsx        Imagem responsiva com srcset, placeholder e altura reservada
-  Botao.tsx       Botão/link nas três variantes da marca
-  Revelar.tsx     Revelação na rolagem via IntersectionObserver
+├── Cabecalho.tsx       # Navegação fixa e menu mobile
+├── Hero.tsx            # Primeira dobra e CTAs principais
+├── Servicos.tsx        # Cards de serviços com orçamento contextualizado
+├── Galeria.tsx         # Galeria de fotos e lightbox acessível
+├── Localizacao.tsx     # Contatos e mapa sob demanda
+├── BotaoFlutuante.tsx  # CTA persistente para o WhatsApp
+└── ...
+
 lib/
-  site.ts  servicos.ts  fotos.ts
+├── site.ts             # Dados institucionais e links globais
+├── servicos.ts         # Serviços, textos, fotos e CTAs
+└── fotos.ts            # Catálogo de imagens e descrições alternativas
+
+public/
+└── fotos/              # Imagens otimizadas em múltiplas larguras
+
 docs/
-  PRODUCT.md  DESIGN.md
-```
-
-## Decisões que valem saber
-
-**Fotos.** As 17 imagens originais viraram 45 arquivos WebP em três larguras,
-de 22 MB para 3,8 MB. Cada foto carrega um placeholder borrado embutido e tem
-largura e altura declaradas, então a página não pula durante o carregamento.
-Não há imagem de banco: tudo é material real da empresa.
-
-**Duas fotos ficaram de fora.** Uma é uma arte promocional com preço e condição
-de pagamento, que contraria a regra de não exibir valores. A outra mostra um
-veículo ainda sujo, que não representa resultado. Os arquivos originais seguem
-disponíveis caso você queira usá-las.
-
-**Mapa sob demanda.** O mapa do Google só carrega quando a pessoa clica. Isso
-evita quase 1 MB de scripts de terceiros no primeiro acesso, que é o cenário
-mais comum: celular, rede móvel.
-
-**Movimento contido.** A página tem um único momento autoral, a abertura, e
-revelações discretas na rolagem. Sem carrossel automático e sem laço infinito.
-Tudo desliga sozinho em `prefers-reduced-motion`.
-
-**Nada foi inventado.** Não há preço, avaliação, tempo de mercado, certificação,
-garantia nem horário de funcionamento na página ou nos dados estruturados,
-porque nada disso foi informado.
-
-## Acessibilidade
-
-- Contraste do texto corrido em 8,8:1 e dos títulos em 17,8:1, acima do exigido
-  pela WCAG AA.
-- Foco visível com anel próprio em todos os elementos interativos.
-- Link "Pular para o conteúdo" no início da página.
-- Lightbox com Escape, setas do teclado e devolução do foco à miniatura.
-- Nenhuma informação depende só de cor. Todo ícone vem acompanhado de texto ou
-  de rótulo acessível.
-- Texto alternativo descritivo em todas as fotos.
-
-## Arquivo do Figma
-
-O sistema visual também está montado no Figma, para quem for produzir peças
-novas da marca (post, story, adesivo, uniforme):
-
-https://www.figma.com/design/lwmMv5I1IiUtOhMGRzSebp
-
-O arquivo tem as 12 cores como variáveis do Figma, os sete estilos de texto em
-Archivo e as três variantes de botão. Os valores são exatamente os mesmos do
-`@theme` em `app/globals.css`. Ao alterar um, altere o outro.
+├── PRODUCT.md          # Decisões de produto
+└── DESIGN.md           # Direção visual e sistema de design
