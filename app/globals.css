@@ -1,0 +1,270 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+   Sistema visual da KS Estética Automotiva.
+   A paleta foi extraída do logo: fundo azul-petróleo quase preto, traço
+   cromado e o azul elétrico do risco de velocidade.
+   Para trocar o destaque da marca inteira, altere apenas --color-marca,
+   --color-marca-forte e --color-brilho.
+--------------------------------------------------------------------------- */
+
+@theme {
+  --color-breu: #05070e;
+  --color-breu-2: #080c15;
+  --color-superficie: #0e1522;
+  --color-superficie-2: #141d2d;
+  --color-linha: #1b2637;
+  --color-linha-forte: #2b3a52;
+
+  --color-texto: #f2f6fb;
+  --color-suave: #9fb0c6;
+
+  --color-marca: #22c9e8;
+  --color-marca-forte: #0fb4d6;
+  --color-brilho: #6fe6ff;
+  --color-cromado: #c9d6e6;
+
+  --font-display: var(--fonte-archivo), "Arial Narrow", system-ui, sans-serif;
+  --font-corpo: var(--fonte-archivo), system-ui, -apple-system, sans-serif;
+
+  --ease-saida: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-suave: cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+@layer base {
+  :root {
+    color-scheme: dark;
+    /* Compensa o cabeçalho fixo quando os links âncora rolam a página. */
+    scroll-padding-top: 5.5rem;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    background-color: var(--color-breu);
+    color: var(--color-texto);
+    font-family: var(--font-corpo);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  /* Superfícies do navegador: seleção, cursor de texto, barra de rolagem e
+     foco também pertencem ao design. */
+  ::selection {
+    background-color: color-mix(in oklab, var(--color-marca) 34%, transparent);
+    color: var(--color-texto);
+  }
+
+  input,
+  textarea {
+    caret-color: var(--color-marca);
+  }
+
+  * {
+    scrollbar-color: var(--color-linha-forte) var(--color-breu);
+    scrollbar-width: thin;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-breu);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-linha-forte);
+    border: 2px solid var(--color-breu);
+    border-radius: 999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: color-mix(in oklab, var(--color-marca) 55%, var(--color-linha-forte));
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brilho);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  a {
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1px;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  img {
+    max-width: 100%;
+  }
+}
+
+@layer components {
+  /* Título de display: Archivo em largura expandida, o registro industrial
+     que combina com o traço do logo. */
+  .display {
+    font-family: var(--font-display);
+    font-variation-settings: "wdth" 112;
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    line-height: 0.98;
+  }
+
+  .display-menor {
+    font-family: var(--font-display);
+    font-variation-settings: "wdth" 108;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.05;
+  }
+
+  /* Fio cromado: o reflexo discreto que separa as seções. */
+  .fio-cromado {
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      color-mix(in oklab, var(--color-cromado) 22%, transparent) 22%,
+      color-mix(in oklab, var(--color-marca) 42%, transparent) 50%,
+      color-mix(in oklab, var(--color-cromado) 22%, transparent) 78%,
+      transparent
+    );
+  }
+
+  /* Placa de foto: moldura escura com a luz alta na borda superior,
+     como a quina de uma lataria polida. */
+  .placa {
+    position: relative;
+    border-radius: 14px;
+    overflow: hidden;
+    background-color: var(--color-superficie);
+    box-shadow:
+      0 1px 0 0 color-mix(in oklab, var(--color-cromado) 12%, transparent) inset,
+      0 18px 40px -24px rgb(0 0 0 / 0.9);
+  }
+
+  .placa::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    border: 1px solid color-mix(in oklab, var(--color-cromado) 9%, transparent);
+    pointer-events: none;
+  }
+}
+
+@layer utilities {
+  /* Revelação na entrada em viewport. Estado padrão já é visível:
+     se o JavaScript falhar, o conteúdo continua legível. */
+  .revelar {
+    opacity: 1;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .revelar[data-revelar="aguardando"] {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+
+    .revelar[data-revelar="visivel"] {
+      opacity: 1;
+      transform: none;
+      transition:
+        opacity 620ms var(--ease-saida),
+        transform 620ms var(--ease-saida);
+      transition-delay: var(--atraso, 0ms);
+    }
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   O único momento de movimento autoral da página: a abertura.
+   O texto sobe uma vez e uma luz atravessa a placa da moto, como o reflexo
+   que corre sobre uma pintura recém-polida. Nada disso se repete em loop.
+--------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-entrada {
+    animation: hero-sobe 760ms var(--ease-saida) both;
+    animation-delay: calc(var(--i, 0) * 90ms);
+  }
+
+  .brilho-varredura::before {
+    content: "";
+    position: absolute;
+    inset: -30% -60%;
+    z-index: 1;
+    pointer-events: none;
+    background: linear-gradient(
+      74deg,
+      transparent 38%,
+      rgb(255 255 255 / 0.1) 47%,
+      rgb(255 255 255 / 0.34) 50%,
+      rgb(255 255 255 / 0.1) 53%,
+      transparent 62%
+    );
+    transform: translateX(-120%);
+    animation: varredura 1500ms var(--ease-suave) 620ms 1 both;
+  }
+}
+
+@keyframes hero-sobe {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes varredura {
+  to {
+    transform: translateX(120%);
+  }
+}
+
+/* Entrada do lightbox: nada surge do zero, a imagem já tem forma antes de
+   aparecer. Modal fica ancorado no centro, não no gatilho. */
+@media (prefers-reduced-motion: no-preference) {
+  .lightbox {
+    animation: aparecer 180ms var(--ease-saida) both;
+  }
+
+  .lightbox-painel {
+    animation: painel-entra 220ms var(--ease-saida) both;
+    transform-origin: center;
+  }
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes painel-entra {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+}

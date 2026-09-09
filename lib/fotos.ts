@@ -1,0 +1,152 @@
+// Gerado a partir das fotos originais da KS Estética Automotiva.
+// Cada foto é servida em WebP em 3 larguras + um placeholder embutido (LQIP).
+
+export type Foto = {
+  id: string;
+  alt: string;
+  largura: number;
+  altura: number;
+  src: string;
+  srcSet: string;
+  lqip: string;
+};
+
+export const fotos = {
+  "lavagem-completa-1": {
+    id: "lavagem-completa-1",
+    alt: "Frente de um Chevrolet Tracker preto com a pintura brilhando depois da lavagem completa",
+    largura: 720,
+    altura: 1280,
+    src: "/fotos/lavagem-completa-1-720.webp",
+    srcSet: ["/fotos/lavagem-completa-1-360.webp 360w", "/fotos/lavagem-completa-1-540.webp 540w", "/fotos/lavagem-completa-1-720.webp 720w"].join(", "),
+    lqip: "data:image/webp;base64,UklGRpQAAABXRUJQVlA4IIgAAABQBACdASoOABkAPtVYpUwoJSOiMAgBABqJQBOgVf4PXqDFKclc1fKvGWwAAPpKSw6JekDKlPdu3E2oaqOLm9JsBZwcq2rzdaBYaRYZIzOvHFZ8LIMtIOPUhLs5LAQAf/48+NsZ8L0EfM3Y4nzBd/+BQFUT5NcRkN/zQ9tdY/5armYYBqIwfAAA",
+  },
+  "lavagem-completa-2": {
+    id: "lavagem-completa-2",
+    alt: "Lateral de um Chevrolet Tracker preto com reflexos na pintura recém-lavada",
+    largura: 720,
+    altura: 1280,
+    src: "/fotos/lavagem-completa-2-720.webp",
+    srcSet: ["/fotos/lavagem-completa-2-360.webp 360w", "/fotos/lavagem-completa-2-540.webp 540w", "/fotos/lavagem-completa-2-720.webp 720w"].join(", "),
+    lqip: "data:image/webp;base64,UklGRogAAABXRUJQVlA4IHwAAADwAwCdASoOABkAPtVYpUwoJSOiMAgBABqJZQAAPIj9e5MZytKwb9kAAP3v8lp4YbKUEX7VStZCsETYT5lXPYmv23Zho9Peuly+XdxODhsYb1Q98jjELhfxUdklpKKhoIEuAVP8/avujuiNWxIydRna/cLx1Zync+hUwIAA",
+  },
+  "higienizacao-interna-1": {
+    id: "higienizacao-interna-1",
+    alt: "Banco de tecido claro depois da higienização interna",
+    largura: 726,
+    altura: 1280,
+    src: "/fotos/higienizacao-interna-1-726.webp",
+    srcSet: ["/fotos/higienizacao-interna-1-360.webp 360w", "/fotos/higienizacao-interna-1-540.webp 540w", "/fotos/higienizacao-interna-1-726.webp 726w"].join(", "),
+    lqip: "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAABQBACdASoOABkAPtVYpUwoJSOiMAgBABqJYwCdMoAChwuWqFf7tOdOShyAAP7Tm3/CHvAPyiv0mtkTgecCGwV930vhDvRubVCdx0bQ4oEIHQv0RYiqI1JpuRfpCFHoXKwSvoDxu4IAAA==",
+  },
+  "cristalizacao-vidro-3": {
+    id: "cristalizacao-vidro-3",
+    alt: "Aplicação com rodo no vidro lateral de uma caminhonete durante a cristalização",
+    largura: 760,
+    altura: 1010,
+    src: "/fotos/cristalizacao-vidro-3-760.webp",
+    srcSet: ["/fotos/cristalizacao-vidro-3-360.webp 360w", "/fotos/cristalizacao-vidro-3-540.webp 540w", "/fotos/cristalizacao-vidro-3-760.webp 760w"].join(", "),
+    lqip: "data:image/webp;base64,UklGRnAAAABXRUJQVlA4IGQAAADwAwCdASoOABMAPtVWpEwoJKOiMAgBABqJZwAATAup82WdBpC6zpYAAP1KXzw8dKYjHmZ85IuD3Qub2FVVI0lb76nj+PUV1IOqH4f9GFroJVFTxV3h/5Bkp29w7WA//PTPAAAA",
+  },
+  "cristalizacao-vidro-2": {
+    id: "cristalizacao-vidro-2",
+    alt: "Sedã prata estacionado na rua com os vidros limpos depois do atendimento",
+    largura: 720,
+    altura: 1280,
+    src: "/fotos/cristalizacao-vidro-2-720.webp",
+    srcSet: ["/fotos/cristalizacao-vidro-2-360.webp 360w", "/fotos/cristalizacao-vidro-2-540.webp 540w", "/fotos/cristalizacao-vidro-2-720.webp 720w"].join(", "),
+    lqip: "data:image/webp;base64,UklGRpYAAABXRUJQVlA4IIoAAABwBACdASoOABkAPtVWpUwoJKOiMAgBABqJYwATiWewBfYvxEQgAdPKnmSKoAD+6ABRBPu3el0zo8g70cRA13n7JOwY/qUjWkvoDZyj/ewSD33OS7W1tIQYMyV3mI8h/xVHopJdjfNxxir5XBbHGJMPr7p690x6ke4nPeRu3raHntmmgqkvMmxgAAA=",
+  },
+  "cristalizacao-vidro-4": {
+    id: "cristalizacao-vidro-4",
+    alt: "Traseira de um Corsa Wagon prata com vidros e pintura limpos",
+    largura: 720,
+    altura: 1280,
+    src: "/fotos/cristalizacao-vidro-4-720.webp",
+    srcSet: ["/fotos/cristalizacao-vidro-4-360.webp 360w", "/fotos/cristalizacao-vidro-4-540.webp 540w", "/fotos/cristalizacao-vidro-4-720.webp 720w"].join(", "),
+    lqip: "data:image/webp;base64,UklGRpYAAABXRUJQVlA4IIoAAAAQBACdASoOABkAPtVYpEwoJSOiMAgBABqJQBOgBCpYQPqX73PtdeAzmAD+3OI7RcRvug1Kosa92IZkw2QDpNB1XJB0DvKxIJsZm/6N/TPWE+FQaviteZYmulwB1YKv2Uo6y0gLnL+OG4gtv/g9QiLUbehn5Nf2cglqk/K57Vju2WUMOCr8yq64AAA=",
+  },
+  "lavagem-motor-1": {
+    id: "lavagem-motor-1",
+    alt: "Cofre do motor limpo com o capô aberto depois da lavagem",
+    largura: 720,
+    altura: 1280,
+    src: "/fotos/lavagem-motor-1-720.webp",
+    srcSet: ["/fotos/lavagem-motor-1-360.webp 360w", "/fotos/lavagem-motor-1-540.webp 540w", "/fotos/lavagem-motor-1-720.webp 720w"].join(", "),
+    lqip: "data:image/webp;base64,UklGRpYAAABXRUJQVlA4IIoAAABQBACdASoOABkAPtVaqEyoJSQiMAgBABqJYwDE2CPtryianT5n8jAt/NoAAP7acxT7VNApz11Iicu4d23Vkz6tyP8BMhMMcTqVk45eeXW1hCzOwRgjpXZr6o2UmV/uGulwDh4972cNR4V+9CZlf+FBgEcA3dHud7y9JWy/C6IN2jvTM4csbm+AAAA=",
+  },
+  "lavagem-motor-2": {
+    id: "lavagem-motor-2",
+    alt: "Compartimento do motor de um hatch prata depois da limpeza detalhada",
+    largura: 720,
+    altura: 1280,
+    src: "/fotos/lavagem-motor-2-720.webp",
+    srcSet: ["/fotos/lavagem-motor-2-360.webp 360w", "/fotos/lavagem-motor-2-540.webp 540w", "/fotos/lavagem-motor-2-720.webp 720w"].join(", "),
+    lqip: "data:image/webp;base64,UklGRp4AAABXRUJQVlA4IJIAAABwBACdASoOABkAPtVYpEwoJSOiMAgBABqJZQDE33gAl1wmB59yDXMhqppYNAD+2+agZmj4x5Lv+xGfo9gOvqPs5tSlb267L25SHYQnt4pp0mXfZ76cIbqMa/yEdedzUQ5SPYUntGy7120Wg5R8IXbNFYnGKGuLzuxmBhm21n1eYMA7dPrFu8Prsw59N/SdarC4AA==",
+  },
+  "lavagem-chassi-1": {
+    id: "lavagem-chassi-1",
+    alt: "Parte inferior de um veículo sobre a rampa durante a lavagem de chassi",
+    largura: 760,
+    altura: 1013,
+    src: "/fotos/lavagem-chassi-1-760.webp",
+    srcSet: ["/fotos/lavagem-chassi-1-360.webp 360w", "/fotos/lavagem-chassi-1-540.webp 540w", "/fotos/lavagem-chassi-1-760.webp 760w"].join(", "),
+    lqip: "data:image/webp;base64,UklGRnQAAABXRUJQVlA4IGgAAAAwBACdASoOABMAPtVWpEwoJKOiMAgBABqJYwDG9BwyAmVpF/yickzKPUAA/toKf+edhS+hLgTG1oS042HyNUl+laLeOZOCBBM4EgYZlz5K9LK+GS423QL27DlNebOO+wN39x7IXIAAAA==",
+  },
+  "motocicletas-1": {
+    id: "motocicletas-1",
+    alt: "Moto esportiva azul e preta lavada, com a carenagem brilhando",
+    largura: 720,
+    altura: 1280,
+    src: "/fotos/motocicletas-1-720.webp",
+    srcSet: ["/fotos/motocicletas-1-360.webp 360w", "/fotos/motocicletas-1-540.webp 540w", "/fotos/motocicletas-1-720.webp 720w"].join(", "),
+    lqip: "data:image/webp;base64,UklGRqIAAABXRUJQVlA4IJYAAACQAwCdASoOABkAPtVYpEwoJSOiMAgBABqJaACdAA75SZ59rjAAAP5XkK6XMZl0OaMGV3DBLSCZWVcPPAa9IVVR2DZM7+GTrg6WZDUa9+uHFKlhO5keWem/dt3O6y0he1QOJb6ciCfJgQbhXVpbNR5hu4W9v/DbAJLBdHH66/7OsAdjbCozhKkZDf1DUkh0fXjuNlqgAAA=",
+  },
+  "motocicletas-2": {
+    id: "motocicletas-2",
+    alt: "Motos naked estacionadas lado a lado depois da lavagem detalhada",
+    largura: 720,
+    altura: 1280,
+    src: "/fotos/motocicletas-2-720.webp",
+    srcSet: ["/fotos/motocicletas-2-360.webp 360w", "/fotos/motocicletas-2-540.webp 540w", "/fotos/motocicletas-2-720.webp 720w"].join(", "),
+    lqip: "data:image/webp;base64,UklGRo4AAABXRUJQVlA4IIIAAAAwBACdASoOABkAPtVYpEwoJSOiMAgBABqJYgC06BuS+gmcjeWsqadJqAAA/sV+SBMrg5WtcAWhpsBkl1PVYjyUl5UYkzaMg2gJ1SknL6rPgucNHCy2SugYvjg3EgNSuTmiEjlR3xcX8VCWVthZF3sL2A0itBfG8x6dFYP1RaX87jgA",
+  },
+  "motocicletas-3": {
+    id: "motocicletas-3",
+    alt: "Moto naked prata e preta limpa, estacionada na calçada",
+    largura: 720,
+    altura: 1280,
+    src: "/fotos/motocicletas-3-720.webp",
+    srcSet: ["/fotos/motocicletas-3-360.webp 360w", "/fotos/motocicletas-3-540.webp 540w", "/fotos/motocicletas-3-720.webp 720w"].join(", "),
+    lqip: "data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAAAwBACdASoOABkAPtVYpUwoJSOiMAgBABqJZQCnFBnM7cFvY3OWNNNmR4AA/vI1V38K/Kz8OHFBO4NYrMwHf0JmMFXQxcLO4chX+LgeJa+GyLtfp2T6hXpjZr4Tc0iH/uM14pkdkYO2CwEQnMJ6re6EXkcfk/EgAAA=",
+  },
+  "motocicletas-4": {
+    id: "motocicletas-4",
+    alt: "Moto naked escura recém-lavada no fim da tarde, com a pintura refletindo a luz",
+    largura: 720,
+    altura: 1280,
+    src: "/fotos/motocicletas-4-720.webp",
+    srcSet: ["/fotos/motocicletas-4-360.webp 360w", "/fotos/motocicletas-4-540.webp 540w", "/fotos/motocicletas-4-720.webp 720w"].join(", "),
+    lqip: "data:image/webp;base64,UklGRn4AAABXRUJQVlA4IHIAAADwAwCdASoOABkAPtVWpEwoJKOiMAgBABqJQBUehEOp3jAheSRaYPGiAP7t3DYdxCDOsvdIsxBaOLov7saTB63+7VnGh/Bc6sPyUXHi5J8rvElbjq7qJOrAR0B9TARciiB0FV14Fbd/sfOpHB12xRrgAAA=",
+  },
+  "caminhoes-guinchos-1": {
+    id: "caminhoes-guinchos-1",
+    alt: "Caminhão azul visto de baixo, com a lateral e a área do chassi limpas",
+    largura: 720,
+    altura: 1280,
+    src: "/fotos/caminhoes-guinchos-1-720.webp",
+    srcSet: ["/fotos/caminhoes-guinchos-1-360.webp 360w", "/fotos/caminhoes-guinchos-1-540.webp 540w", "/fotos/caminhoes-guinchos-1-720.webp 720w"].join(", "),
+    lqip: "data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAAAQBACdASoOABkAPtVWpUwoJKOiMAgBABqJQBWAA3R69pTEzO4FxaFaMAD+8EbvZb7W3siLbCRzFfKWm4jh6vRuW0cc7Nv9AxY0TZhCKj3UCjEqURLqUhYuBFDNWGPqYvV067PyRabT2Pr0yduzFsmE2rZNNKogAAA=",
+  },
+  "caminhoes-guinchos-2": {
+    id: "caminhoes-guinchos-2",
+    alt: "Caminhão guincho branco lavado, estacionado ao sol",
+    largura: 720,
+    altura: 1280,
+    src: "/fotos/caminhoes-guinchos-2-720.webp",
+    srcSet: ["/fotos/caminhoes-guinchos-2-360.webp 360w", "/fotos/caminhoes-guinchos-2-540.webp 540w", "/fotos/caminhoes-guinchos-2-720.webp 720w"].join(", "),
+    lqip: "data:image/webp;base64,UklGRrgAAABXRUJQVlA4IKwAAACwBACdASoOABkAPtVYpEwoJSOiMAgBABqJYgCsACB3Y5ba7ZsBo2ou/21GnfgAAP6YMm1taLwGiKDUq1j+WYc9V4MEmC75f5ueVtHqBhZ6FyX+Zzio7lLH5+xdIFa5XCPps5SYP0lrjLC9UXsdyYV3maXrY+6XGf0BgSN0n80lHmEHZnJWpou+Wu5PEBCByZ2GS7LfHTD/X/mUb6yYlOJYWGE1hFfQ4lCrqUAA",
+  },
+} as const satisfies Record<string, Foto>;
+
+export type FotoId = keyof typeof fotos;
