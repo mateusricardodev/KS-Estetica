@@ -6,7 +6,6 @@ import { fotos, type FotoId } from "@/lib/fotos";
 import { videos, type VideoId } from "@/lib/videos";
 import { Foto } from "./Foto";
 import { Revelar } from "./Revelar";
-import { VideoAoVivo } from "./VideoAoVivo";
 
 type Item = { tipo: "foto"; id: FotoId } | { tipo: "video"; id: VideoId };
 const f = (id: FotoId): Item => ({ tipo: "foto", id });
@@ -127,10 +126,14 @@ export function Galeria() {
                   />
                 ) : (
                   <>
-                    <VideoAoVivo
-                      video={videos[item.id]}
-                      preencher
-                      className="transition-[transform,filter] duration-500 ease-[var(--ease-saida)] group-hover:scale-[1.05] group-hover:brightness-110"
+                    <img
+                      src={videos[item.id].poster}
+                      width={videos[item.id].largura}
+                      height={videos[item.id].altura}
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                      className="absolute inset-0 h-full w-full object-cover transition-[transform,filter] duration-500 ease-[var(--ease-saida)] group-hover:scale-[1.05] group-hover:brightness-110"
                     />
                     <span
                       aria-hidden

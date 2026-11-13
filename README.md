@@ -20,7 +20,7 @@ O site foi desenhado para apresentar os serviços reais da estética, valorizar 
 - Experiência responsiva, pensada primeiro para celular.
 - Header fixo, menu compacto e botão flutuante de WhatsApp.
 - CTAs com mensagens pré-preenchidas por serviço.
-- Grade assimétrica para os oito serviços da empresa, quatro deles com vídeo real.
+- Grade assimétrica para os oito serviços da empresa. Quatro têm botão "Ver vídeo", que abre o vídeo real com o pedido de orçamento logo abaixo.
 - Galeria com 19 fotos e 1 vídeo reais, e lightbox navegável por teclado.
 - Imagens WebP responsivas, com `srcset`, placeholder e dimensões reservadas para evitar saltos de layout.
 - Mapa carregado apenas sob demanda, reduzindo scripts de terceiros no primeiro acesso.
@@ -78,7 +78,7 @@ components/
 ├── Cabecalho.tsx       # Navegação fixa e menu mobile
 ├── Hero.tsx            # Primeira dobra e CTAs principais
 ├── Servicos.tsx        # Cards de serviços com orçamento contextualizado
-├── VideoAoVivo.tsx     # Vídeo mudo que só toca quando está visível
+├── VideoServico.tsx    # Botão "Ver vídeo" e painel com vídeo + orçamento
 ├── Galeria.tsx         # Galeria de fotos e vídeo com lightbox acessível
 ├── Localizacao.tsx     # Contatos e mapa sob demanda
 ├── BotaoFlutuante.tsx  # CTA persistente para o WhatsApp

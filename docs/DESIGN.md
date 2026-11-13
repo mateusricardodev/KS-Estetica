@@ -85,9 +85,9 @@ Linguagem automotiva, cada efeito com um motivo e nenhum em loop:
   navegador suporta animação guiada por rolagem.
 - **Risco de velocidade**: as três ondas do logo se desenham uma vez sob o
   título principal.
-- **Vídeos**: mudos, tocam só enquanto visíveis e pausam fora da tela. Com
-  movimento reduzido ficam parados no poster. No card largo, o vídeo vertical
-  entra numa placa no tamanho nativo, para não ser esticado.
+- **Vídeos**: nunca tocam sozinhos. Os cards mostram a foto parada; quem quiser
+  vê o vídeo pelo botão "Ver vídeo", num painel na própria página, com o pedido
+  de orçamento logo abaixo.
 
 
 Intensidade baixa por decisão de briefing. Um momento autoral, e só.

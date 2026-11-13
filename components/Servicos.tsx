@@ -5,7 +5,7 @@ import { servicos, type Servico } from "@/lib/servicos";
 import { linkWhatsApp, mensagens } from "@/lib/site";
 import { Foto } from "./Foto";
 import { Revelar } from "./Revelar";
-import { VideoAoVivo } from "./VideoAoVivo";
+import { VideoServico } from "./VideoServico";
 
 /**
  * Grade assimétrica de 6 colunas, sem célula vazia:
@@ -37,6 +37,7 @@ function Cartao({
 }) {
   const foto = fotos[servico.foto];
   const { destaque } = servico;
+  const orcamento = linkWhatsApp(mensagens.servico(servico.termoOrcamento));
 
   return (
     <Revelar
@@ -55,37 +56,13 @@ function Cartao({
             : "min-h-[clamp(11rem,20vw,15rem)]"
         }`}
       >
-        {servico.video && destaque ? (
-          // Card largo: a foto nítida ocupa o fundo e o vídeo, que é vertical
-          // e tem 320 px de origem, entra numa placa no tamanho em que fica
-          // nítido, como a tela de um celular apoiada sobre a lataria.
-          <>
-            <Foto
-              foto={foto}
-              sizes={sizesPorColuna[servico.colunas]}
-              preencher
-              posicao="center 48%"
-              className="transition-transform duration-500 ease-[var(--ease-saida)] group-hover:scale-[1.04]"
-            />
-            <div className="placa absolute top-4 right-4 bottom-4 z-[1] aspect-[9/16] hidden sm:block">
-              <VideoAoVivo video={videos[servico.video]} preencher />
-            </div>
-          </>
-        ) : servico.video ? (
-          <VideoAoVivo
-            video={videos[servico.video]}
-            preencher
-            className="transition-transform duration-500 ease-[var(--ease-saida)] group-hover:scale-[1.04]"
-          />
-        ) : (
-          <Foto
-            foto={foto}
-            sizes={sizesPorColuna[servico.colunas]}
-            preencher
-            posicao="center 48%"
-            className="transition-transform duration-500 ease-[var(--ease-saida)] group-hover:scale-[1.04]"
-          />
-        )}
+        <Foto
+          foto={foto}
+          sizes={sizesPorColuna[servico.colunas]}
+          preencher
+          posicao="center 48%"
+          className="transition-transform duration-500 ease-[var(--ease-saida)] group-hover:scale-[1.04]"
+        />
         <div
           aria-hidden
           className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-b from-transparent to-superficie"
@@ -104,16 +81,26 @@ function Cartao({
           {servico.descricao}
         </p>
 
-        <a
-          href={linkWhatsApp(mensagens.servico(servico.termoOrcamento))}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={`Pedir orçamento de ${servico.titulo} pelo WhatsApp`}
-          className="mt-6 inline-flex w-fit items-center gap-2 rounded-full border border-linha-forte px-4 py-2.5 text-[0.9375rem] font-semibold text-texto transition-[transform,background-color,border-color,color] duration-150 ease-[var(--ease-saida)] hover:border-marca hover:bg-marca hover:text-breu active:scale-[0.97]"
-        >
-          Pedir orçamento
-          <ArrowUpRight size={17} weight="bold" aria-hidden />
-        </a>
+        <div className="mt-6 flex flex-wrap gap-2.5">
+          <a
+            href={orcamento}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Pedir orçamento de ${servico.titulo} pelo WhatsApp`}
+            className="inline-flex w-fit items-center gap-2 rounded-full border border-linha-forte px-4 py-2.5 text-[0.9375rem] font-semibold text-texto transition-[transform,background-color,border-color,color] duration-150 ease-[var(--ease-saida)] hover:border-marca hover:bg-marca hover:text-breu active:scale-[0.97]"
+          >
+            Pedir orçamento
+            <ArrowUpRight size={17} weight="bold" aria-hidden />
+          </a>
+          {servico.video && (
+            <VideoServico
+              video={videos[servico.video]}
+              titulo={servico.titulo}
+              descricao={servico.descricao}
+              linkOrcamento={orcamento}
+            />
+          )}
+        </div>
       </div>
     </Revelar>
   );
