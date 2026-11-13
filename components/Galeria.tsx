@@ -1,29 +1,46 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { CaretLeft, CaretRight, X } from "@phosphor-icons/react/dist/ssr";
+import { CaretLeft, CaretRight, Play, X } from "@phosphor-icons/react/dist/ssr";
 import { fotos, type FotoId } from "@/lib/fotos";
+import { videos, type VideoId } from "@/lib/videos";
 import { Foto } from "./Foto";
 import { Revelar } from "./Revelar";
+import { VideoAoVivo } from "./VideoAoVivo";
 
-/** Ordem escolhida para alternar carros, motos, detalhes e veículos grandes. */
-const ordem: FotoId[] = [
-  "motocicletas-4",
-  "lavagem-completa-1",
-  "cristalizacao-vidro-3",
-  "lavagem-motor-1",
-  "motocicletas-2",
-  "lavagem-completa-2",
-  "higienizacao-interna-1",
-  "caminhoes-guinchos-2",
-  "motocicletas-1",
-  "lavagem-chassi-1",
-  "cristalizacao-vidro-2",
-  "lavagem-motor-2",
-  "motocicletas-3",
-  "caminhoes-guinchos-1",
-  "cristalizacao-vidro-4",
+type Item = { tipo: "foto"; id: FotoId } | { tipo: "video"; id: VideoId };
+const f = (id: FotoId): Item => ({ tipo: "foto", id });
+const v = (id: VideoId): Item => ({ tipo: "video", id });
+
+/**
+ * 20 itens: fecham certo em 2, 4 e 5 colunas.
+ * A ordem alterna carros, motos, detalhes, veículos grandes e vídeo.
+ */
+const ordem: Item[] = [
+  f("motocicletas-4"),
+  f("carro-antigo-1"),
+  f("lavagem-completa-1"),
+  v("lavagem-suv"),
+  f("cristalizacao-vidro-3"),
+  f("lavagem-motor-1"),
+  f("motocicletas-2"),
+  f("fachada-ks"),
+  f("lavagem-completa-2"),
+  f("higienizacao-interna-1"),
+  f("carro-antigo-2"),
+  f("caminhoes-guinchos-2"),
+  f("motocicletas-1"),
+  f("lavagem-chassi-1"),
+  f("lavagem-motor-3"),
+  f("cristalizacao-vidro-2"),
+  f("lavagem-motor-2"),
+  f("motocicletas-3"),
+  f("caminhoes-guinchos-1"),
+  f("cristalizacao-vidro-4"),
 ];
+
+const descricao = (item: Item) =>
+  item.tipo === "foto" ? fotos[item.id].alt : videos[item.id].descricao;
 
 export function Galeria() {
   const [aberta, setAberta] = useState<number | null>(null);
@@ -72,13 +89,13 @@ export function Galeria() {
     ultimoGatilho.current = null;
   }, [aberta]);
 
-  const fotoAtual = aberta === null ? null : fotos[ordem[aberta]];
+  const itemAtual = aberta === null ? null : ordem[aberta];
 
   return (
     <section id="galeria" className="relative scroll-mt-20 bg-breu py-20 sm:py-28">
       <div className="mx-auto max-w-[1320px] px-5 md:px-8">
         <Revelar className="max-w-[46rem]">
-          <h2 className="display text-[clamp(2rem,4.6vw,3.5rem)] text-texto">
+          <h2 className="passada display text-[clamp(2rem,4.6vw,3.5rem)] text-texto">
             Detalhes que fazem a diferença
           </h2>
           <p className="mt-5 max-w-[58ch] text-lg leading-relaxed text-suave">
@@ -86,46 +103,50 @@ export function Galeria() {
           </p>
         </Revelar>
 
-        {/* Grade fechada em vez de masonry: 15 fotos cabem exatas em 5 x 3 no
-            desktop e 3 x 5 no tablet. No celular a primeira abre a grade em
-            largura dupla e as outras 14 fecham 7 linhas certas.
-            A proporção fica no botão (classes) e não no estilo inline da foto,
-            para as variantes responsivas realmente valerem. */}
+        {/* Grade fechada: 20 itens em 2, 4 e 5 colunas, sem célula vazia. */}
         <Revelar atraso={100} className="mt-12">
-          <div className="grid grid-cols-2 gap-2.5 sm:gap-3 md:grid-cols-3 lg:grid-cols-5">
-            {ordem.map((id, indice) => {
-              const foto = fotos[id];
-              const abreGrade = indice === 0;
-              return (
-                <button
-                  key={id}
-                  type="button"
-                  ref={(no) => {
-                    gatilhos.current[indice] = no;
-                  }}
-                  onClick={() => setAberta(indice)}
-                  aria-label={`Ampliar foto: ${foto.alt}`}
-                  className={`placa group relative block w-full cursor-zoom-in transition-transform duration-300 ease-[var(--ease-saida)] active:scale-[0.985] ${
-                    abreGrade
-                      ? "col-span-2 aspect-[16/10] md:col-span-1 md:aspect-[3/4]"
-                      : "aspect-[3/4]"
-                  }`}
-                >
+          <div className="grid grid-cols-2 gap-2.5 sm:gap-3 md:grid-cols-4 lg:grid-cols-5">
+            {ordem.map((item, indice) => (
+              <button
+                key={item.id}
+                type="button"
+                ref={(no) => {
+                  gatilhos.current[indice] = no;
+                }}
+                onClick={() => setAberta(indice)}
+                aria-label={`${item.tipo === "video" ? "Assistir vídeo" : "Ampliar foto"}: ${descricao(item)}`}
+                className="placa group relative block aspect-[3/4] w-full cursor-zoom-in transition-transform duration-300 ease-[var(--ease-saida)] active:scale-[0.985]"
+              >
+                {item.tipo === "foto" ? (
                   <Foto
-                    foto={foto}
-                    sizes="(min-width: 1024px) 19vw, (min-width: 768px) 31vw, (min-width: 640px) 47vw, 94vw"
+                    foto={fotos[item.id]}
+                    sizes="(min-width: 1024px) 19vw, (min-width: 768px) 24vw, 47vw"
                     preencher
-                    posicao={abreGrade ? "center 55%" : "center 45%"}
+                    posicao="center 45%"
                     className="transition-[transform,filter] duration-500 ease-[var(--ease-saida)] group-hover:scale-[1.05] group-hover:brightness-110"
                   />
-                </button>
-              );
-            })}
+                ) : (
+                  <>
+                    <VideoAoVivo
+                      video={videos[item.id]}
+                      preencher
+                      className="transition-[transform,filter] duration-500 ease-[var(--ease-saida)] group-hover:scale-[1.05] group-hover:brightness-110"
+                    />
+                    <span
+                      aria-hidden
+                      className="absolute bottom-3 left-3 z-[2] inline-flex size-10 items-center justify-center rounded-full bg-breu/70 text-texto backdrop-blur-sm"
+                    >
+                      <Play size={18} weight="fill" />
+                    </span>
+                  </>
+                )}
+              </button>
+            ))}
           </div>
         </Revelar>
       </div>
 
-      {fotoAtual && aberta !== null && (
+      {itemAtual && aberta !== null && (
         <div
           className="lightbox fixed inset-0 z-[70] flex items-center justify-center bg-breu/95 p-4 backdrop-blur-md sm:p-8"
           onClick={fechar}
@@ -134,30 +155,48 @@ export function Galeria() {
             ref={painel}
             role="dialog"
             aria-modal="true"
-            aria-label={`Foto ${aberta + 1} de ${ordem.length}: ${fotoAtual.alt}`}
+            aria-label={`Item ${aberta + 1} de ${ordem.length}: ${descricao(itemAtual)}`}
             tabIndex={-1}
             onClick={(evento) => evento.stopPropagation()}
             className="lightbox-painel relative flex max-h-full w-full max-w-[min(92vw,44rem)] flex-col items-center gap-4 outline-none"
           >
-            <img
-              src={fotoAtual.src}
-              srcSet={fotoAtual.srcSet}
-              sizes="(min-width: 640px) 44rem, 92vw"
-              width={fotoAtual.largura}
-              height={fotoAtual.altura}
-              alt={fotoAtual.alt}
-              className="max-h-[74vh] w-auto rounded-xl object-contain shadow-[0_40px_90px_-40px_rgba(0,0,0,0.95)]"
-            />
+            {itemAtual.tipo === "foto" ? (
+              <img
+                key={itemAtual.id}
+                src={fotos[itemAtual.id].src}
+                srcSet={fotos[itemAtual.id].srcSet}
+                sizes="(min-width: 640px) 44rem, 92vw"
+                width={fotos[itemAtual.id].largura}
+                height={fotos[itemAtual.id].altura}
+                alt={fotos[itemAtual.id].alt}
+                className="lightbox-midia max-h-[74vh] w-auto rounded-xl object-contain shadow-[0_40px_90px_-40px_rgba(0,0,0,0.95)]"
+              />
+            ) : (
+              <video
+                key={itemAtual.id}
+                src={videos[itemAtual.id].src}
+                poster={videos[itemAtual.id].poster}
+                width={videos[itemAtual.id].largura}
+                height={videos[itemAtual.id].altura}
+                aria-label={videos[itemAtual.id].descricao}
+                autoPlay
+                muted
+                loop
+                playsInline
+                controls
+                className="lightbox-midia max-h-[74vh] w-auto rounded-xl bg-breu shadow-[0_40px_90px_-40px_rgba(0,0,0,0.95)]"
+              />
+            )}
 
             <p className="max-w-[60ch] text-center text-sm leading-relaxed text-suave">
-              {fotoAtual.alt}
+              {descricao(itemAtual)}
             </p>
 
             <div className="flex items-center gap-3">
               <button
                 type="button"
                 onClick={() => mover(-1)}
-                aria-label="Foto anterior"
+                aria-label="Item anterior"
                 className="inline-flex size-11 items-center justify-center rounded-full border border-linha-forte bg-superficie text-texto transition-[transform,border-color] duration-150 ease-[var(--ease-saida)] hover:border-marca active:scale-[0.94]"
               >
                 <CaretLeft size={20} weight="bold" aria-hidden />
@@ -173,7 +212,7 @@ export function Galeria() {
               <button
                 type="button"
                 onClick={() => mover(1)}
-                aria-label="Próxima foto"
+                aria-label="Próximo item"
                 className="inline-flex size-11 items-center justify-center rounded-full border border-linha-forte bg-superficie text-texto transition-[transform,border-color] duration-150 ease-[var(--ease-saida)] hover:border-marca active:scale-[0.94]"
               >
                 <CaretRight size={20} weight="bold" aria-hidden />

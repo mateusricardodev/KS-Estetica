@@ -22,7 +22,7 @@ export function Localizacao() {
       <div className="mx-auto max-w-[1320px] px-5 md:px-8">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
           <Revelar className="lg:col-span-5">
-            <h2 className="display text-[clamp(2rem,4.6vw,3.5rem)] text-texto">
+            <h2 className="passada display text-[clamp(2rem,4.6vw,3.5rem)] text-texto">
               Onde estamos
             </h2>
 

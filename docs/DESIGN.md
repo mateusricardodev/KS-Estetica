@@ -75,6 +75,21 @@ família dentro da frase.
 
 ## Movimento
 
+Linguagem automotiva, cada efeito com um motivo e nenhum em loop:
+
+- **Reflexo de pintura**: uma faixa de luz atravessa a mídia de cada card uma
+  vez, quando ele entra na tela. Diz "isto está brilhando" sem texto.
+- **Passada**: os títulos de seção são revelados da esquerda para a direita,
+  como um carro cruzando o quadro.
+- **Friso cromado**: o fio entre seções se estende ao entrar na tela, onde o
+  navegador suporta animação guiada por rolagem.
+- **Risco de velocidade**: as três ondas do logo se desenham uma vez sob o
+  título principal.
+- **Vídeos**: mudos, tocam só enquanto visíveis e pausam fora da tela. Com
+  movimento reduzido ficam parados no poster. No card largo, o vídeo vertical
+  entra numa placa no tamanho nativo, para não ser esticado.
+
+
 Intensidade baixa por decisão de briefing. Um momento autoral, e só.
 
 - **Abertura**: o texto do hero sobe uma vez, escalonado a cada 90ms, e uma luz
@@ -102,10 +117,9 @@ Sete famílias de layout, nenhuma repetida:
 2. **Apresentação**: declaração larga seguida de uma faixa de três recortes de
    detalhe (pintura, vidro, motor).
 3. **Serviços**: grade assimétrica de 6 colunas que fecha exata,
-   4+2 / 2+2+2 / 3+3. Sete itens, sete células, nenhuma vazia. A foto de cada
+   4+2 / 2+2+2 / 2+2+2. Oito itens, oito células, nenhuma vazia. A mídia de cada
    card absorve a sobra de altura da linha.
-4. **Galeria**: grade fechada, 5x3 no desktop, 3x5 no tablet, 1 larga mais
-   7 linhas de 2 no celular.
+4. **Galeria**: 20 itens em grade fechada de 5, 4 e 2 colunas.
 5. **Chamada final**: campo de cor ocupando a região inteira.
 6. **Localização**: divisão de lista e mapa.
 7. **Rodapé**: três colunas.

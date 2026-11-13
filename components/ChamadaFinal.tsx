@@ -24,12 +24,17 @@ export function ChamadaFinal() {
         <div className="absolute inset-0 bg-[radial-gradient(80%_120%_at_12%_0%,rgba(34,201,232,0.26)_0%,transparent_62%)]" />
       </div>
 
+      {/* Um único reflexo largo atravessa a seção quando ela chega. */}
+      <Revelar className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+        <div aria-hidden className="reflexo-largo absolute inset-0" />
+      </Revelar>
+
       <div aria-hidden className="fio-cromado absolute inset-x-0 top-0" />
       <div aria-hidden className="fio-cromado absolute inset-x-0 bottom-0" />
 
       <div className="mx-auto max-w-[1320px] px-5 py-24 md:px-8 sm:py-32">
         <Revelar className="max-w-[42rem]">
-          <h2 className="display text-[clamp(2.25rem,5.4vw,4rem)] text-texto">
+          <h2 className="passada display text-[clamp(2.25rem,5.4vw,4rem)] text-texto">
             Seu veículo merece esse cuidado.
           </h2>
           <p className="mt-6 max-w-[46ch] text-lg leading-relaxed text-texto/85 sm:text-xl">

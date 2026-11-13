@@ -147,6 +147,42 @@ export const fotos = {
     srcSet: ["/fotos/caminhoes-guinchos-2-360.webp 360w", "/fotos/caminhoes-guinchos-2-540.webp 540w", "/fotos/caminhoes-guinchos-2-720.webp 720w"].join(", "),
     lqip: "data:image/webp;base64,UklGRrgAAABXRUJQVlA4IKwAAACwBACdASoOABkAPtVYpEwoJSOiMAgBABqJYgCsACB3Y5ba7ZsBo2ou/21GnfgAAP6YMm1taLwGiKDUq1j+WYc9V4MEmC75f5ueVtHqBhZ6FyX+Zzio7lLH5+xdIFa5XCPps5SYP0lrjLC9UXsdyYV3maXrY+6XGf0BgSN0n80lHmEHZnJWpou+Wu5PEBCByZ2GS7LfHTD/X/mUb6yYlOJYWGE1hFfQ4lCrqUAA",
   },
+  "carro-antigo-1": {
+    id: "carro-antigo-1",
+    alt: "Opala cupê dourado estacionado na rua, com a pintura limpa e brilhando",
+    largura: 360,
+    altura: 640,
+    src: "/fotos/carro-antigo-1-360.webp",
+    srcSet: ["/fotos/carro-antigo-1-360.webp 360w"].join(", "),
+    lqip: "data:image/webp;base64,UklGRoYAAABXRUJQVlA4IHoAAAAwBACdASoOABkAPtVWpEwoJKOiMAgBABqJZQCo9BZxtMO8MciF1qp+VJgA/u/UcVgC4JcPq9p/3hOWHYlM8qmJjpk4auQ7nKxHhBKp6QKBUDj2YJR9EroasVEgC3k2UjgddW4msqLHO6dSvmKTPxse/8h+1sOn72gAAA==",
+  },
+  "carro-antigo-2": {
+    id: "carro-antigo-2",
+    alt: "Traseira e lateral do Opala dourado depois da limpeza",
+    largura: 360,
+    altura: 640,
+    src: "/fotos/carro-antigo-2-360.webp",
+    srcSet: ["/fotos/carro-antigo-2-360.webp 360w"].join(", "),
+    lqip: "data:image/webp;base64,UklGRoQAAABXRUJQVlA4IHgAAADQAwCdASoOABkAPtVYpEwoJSOiMAgBABqJQBe6BDBpWc2jxC1+SAAA/sj8sica4l9DlSn7PmDBT+aY9ihe7fKExYTAebCL6UniXE449tD2dMxS7YMSNKL7jmSuoYn7ofVkWXN+Ls2p01wFzHEZCruQ91IMu/9gAAA=",
+  },
+  "lavagem-motor-3": {
+    id: "lavagem-motor-3",
+    alt: "Cofre do motor limpo de um veículo escuro, com o capô aberto",
+    largura: 360,
+    altura: 640,
+    src: "/fotos/lavagem-motor-3-360.webp",
+    srcSet: ["/fotos/lavagem-motor-3-360.webp 360w"].join(", "),
+    lqip: "data:image/webp;base64,UklGRp4AAABXRUJQVlA4IJIAAAAQBACdASoOABkAPtVWpUwoJKOiMAgBABqJZwAAXlYmah8mRCJTUc5kQAD+5OoCBLqVlKR/H6/moE+FoLrsCGaO3TuP9AcsrnLtLCyZp2aCzeP9zjeu93eN4+mNWM4SqlF5o3AQL2OmEOc9izVa8HdFxnqFweepGK0ZOVmfcPGz8md69sJeQxTt729BjfLpQIAAAA==",
+  },
+  "fachada-ks": {
+    id: "fachada-ks",
+    alt: "Fachada da KS Estética Automotiva com a placa da loja e um sedã limpo na frente",
+    largura: 360,
+    altura: 640,
+    src: "/fotos/fachada-ks-360.webp",
+    srcSet: ["/fotos/fachada-ks-360.webp 360w"].join(", "),
+    lqip: "data:image/webp;base64,UklGRqIAAABXRUJQVlA4IJYAAAAwBACdASoOABkAPtVYpUwoJSOiMAgBABqJYwC/OCKeLp5JIZnd04VJywAA/uhlWIptVUla5YJINc6THg9CdGudCm9RyOkLZdQ065dVsuHrHkvXiiakeTxQUmUWMEntYfKSpkfSx8PaLbo27a+9tbDHxdqqHsNZIaq80u+bfZOiwjZBj7HXHBFQNM06W6ozm+OL+vIQAAA=",
+  },
 } as const satisfies Record<string, Foto>;
 
 export type FotoId = keyof typeof fotos;

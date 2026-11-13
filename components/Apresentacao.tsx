@@ -14,7 +14,7 @@ export function Apresentacao() {
     <section className="relative bg-breu py-20 sm:py-28">
       <div className="mx-auto max-w-[1320px] px-5 md:px-8">
         <Revelar className="max-w-[52rem]">
-          <h2 className="display text-[clamp(2rem,4.6vw,3.5rem)] text-texto">
+          <h2 className="passada display text-[clamp(2rem,4.6vw,3.5rem)] text-texto">
             Cuidado que se vê em cada detalhe
           </h2>
           <p className="mt-6 max-w-[62ch] text-lg leading-relaxed text-suave">

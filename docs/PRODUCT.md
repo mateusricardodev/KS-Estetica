@@ -25,7 +25,7 @@ O celular é o cenário principal, não uma adaptação do desktop.
 
 ## Serviços oferecidos
 
-Sete, confirmados pela empresa:
+Oito, confirmados pela empresa:
 
 1. Lavagem completa interna e externa
 2. Higienização interna
@@ -34,6 +34,7 @@ Sete, confirmados pela empresa:
 5. Lavagem de chassi
 6. Lavagem detalhada de motocicletas
 7. Lavagens de caminhões e guinchos
+8. Limpeza de carros antigos
 
 ## Contatos
 
@@ -58,7 +59,7 @@ dados estruturados:
 - avaliação, nota, depoimento de cliente
 - tempo de mercado, certificação, garantia
 - horário de funcionamento
-- serviço fora da lista das sete
+- serviço fora da lista das oito
 
 Duas imagens do material original ficaram fora da página por essa regra: uma
 arte promocional que anuncia preço e parcelamento, e uma foto de veículo ainda
@@ -66,7 +67,7 @@ sujo, que não representa resultado entregue.
 
 ## Material de origem
 
-17 fotos reais da empresa mais o logo. Nenhuma imagem de banco entra na página:
+21 fotos e 7 vídeos reais da empresa, mais o logo. Nenhuma imagem de banco entra na página:
 onde existe foto do serviço, ela é usada.
 
 ## Pendências para a empresa decidir

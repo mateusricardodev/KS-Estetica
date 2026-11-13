@@ -28,8 +28,21 @@ export function Hero() {
             de uma lavagem<span className="text-marca">.</span>
           </h1>
 
+          {/* As ondas do logo, desenhadas uma vez: o risco de velocidade
+              que assina a marca. pathLength=1 deixa o traço proporcional. */}
+          <svg
+            aria-hidden
+            viewBox="0 0 160 22"
+            fill="none"
+            className="risco mt-5 h-[22px] w-40 text-marca"
+          >
+            <path pathLength={1} d="M2 8 C 40 2, 90 2, 158 9" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+            <path pathLength={1} d="M14 14 C 52 9, 98 9, 146 15" stroke="currentColor" strokeOpacity="0.6" strokeWidth="2" strokeLinecap="round" />
+            <path pathLength={1} d="M30 20 C 62 16, 100 16, 132 20" stroke="currentColor" strokeOpacity="0.3" strokeWidth="1.5" strokeLinecap="round" />
+          </svg>
+
           <p
-            className="hero-entrada mt-6 max-w-[46ch] text-lg leading-relaxed text-suave sm:text-xl"
+            className="hero-entrada mt-5 max-w-[46ch] text-lg leading-relaxed text-suave sm:text-xl"
             style={{ "--i": 1 } as React.CSSProperties}
           >
             Na {site.nome}, cuidamos de cada detalhe para valorizar e proteger o
