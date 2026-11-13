@@ -32,8 +32,12 @@ export const site = {
       "Rua Joaquim Batista de Carvalho, 143, Zona Leste (Santa Inês 1), São José dos Campos, SP",
   },
 
-  /** Trocar pelo domínio real na publicação. Usado em canonical, OG e sitemap. */
-  url: "https://ksesteticaautomotiva.com.br",
+  /**
+   * Endereço público do site. Alimenta canonical, Open Graph (a foto que
+   * aparece quando o link é compartilhado no WhatsApp) e sitemap.
+   * Ao ligar um domínio próprio na Vercel, troque aqui.
+   */
+  url: "https://ks-estetica.vercel.app",
 } as const;
 
 /** Monta um link do WhatsApp com mensagem pré-preenchida. */
