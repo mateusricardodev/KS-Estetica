@@ -130,6 +130,11 @@ export function Cabecalho() {
         </div>
 
         <div
+          aria-hidden
+          className="progresso absolute inset-x-0 -bottom-px h-0.5 bg-gradient-to-r from-marca-forte via-marca to-brilho"
+        />
+
+        <div
           id="menu-mobile"
           hidden={!aberto}
           className="border-t border-linha bg-breu/97 backdrop-blur-xl lg:hidden"

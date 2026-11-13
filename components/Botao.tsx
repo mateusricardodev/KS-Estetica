@@ -22,7 +22,7 @@ const base =
 const variantes: Record<Variante, string> = {
   // Preenchimento da marca com texto quase preto: 9.9:1 de contraste.
   primario:
-    "bg-marca text-breu hover:bg-brilho shadow-[0_10px_30px_-14px_rgba(34,201,232,0.7)]",
+    "botao-brilho relative isolate overflow-hidden bg-marca text-breu hover:bg-brilho shadow-[0_10px_30px_-14px_rgba(34,201,232,0.7)]",
   // Contorno cromado sobre o fundo escuro.
   secundario:
     "border border-linha-forte bg-superficie/70 text-texto hover:border-marca hover:bg-superficie-2",

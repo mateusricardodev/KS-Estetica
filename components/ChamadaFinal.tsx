@@ -27,6 +27,8 @@ export function ChamadaFinal() {
       {/* Um único reflexo largo atravessa a seção quando ela chega. */}
       <Revelar className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
         <div aria-hidden className="reflexo-largo absolute inset-0" />
+        <div aria-hidden className="farol farol-esq" />
+        <div aria-hidden className="farol farol-dir" />
       </Revelar>
 
       <div aria-hidden className="fio-cromado absolute inset-x-0 top-0" />

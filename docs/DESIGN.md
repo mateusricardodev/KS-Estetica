@@ -85,6 +85,15 @@ Linguagem automotiva, cada efeito com um motivo e nenhum em loop:
   navegador suporta animação guiada por rolagem.
 - **Risco de velocidade**: as três ondas do logo se desenham uma vez sob o
   título principal.
+- **Reflexo no hover**: com mouse, a luz atravessa a foto do card e o botão
+  principal enquanto o cursor está sobre eles. Entra devagar e volta na hora.
+- **Faróis**: dois fachos acendem na chamada final, com a hesitação de uma
+  lâmpada ligando, e ficam acesos parados.
+- **Galeria em cascata**: cada foto entra sozinha, 55 ms depois da vizinha.
+- **Linha de progresso**: friso azul no cabeçalho que cresce com a rolagem.
+- **Anel no WhatsApp**: um único anel no botão flutuante, 6 s após abrir.
+- **Foto vira vídeo**: em "Ver vídeo", a foto do card se expande até o painel
+  (View Transitions). Sem suporte ou com movimento reduzido, abre direto.
 - **Vídeos**: nunca tocam sozinhos. Os cards mostram a foto parada; quem quiser
   vê o vídeo pelo botão "Ver vídeo", num painel na própria página, com o pedido
   de orçamento logo abaixo.

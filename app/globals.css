@@ -393,3 +393,169 @@
     transform: scale(0.985);
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Segunda camada de movimento.
+--------------------------------------------------------------------------- */
+
+/* 1. Reflexo ao passar o mouse: a luz atravessa a peça enquanto o cursor
+   está sobre ela. Entra devagar, volta na hora (transição, não keyframe,
+   para poder ser interrompida). Só em dispositivo com mouse. */
+@media (prefers-reduced-motion: no-preference) and (hover: hover) and (pointer: fine) {
+  .reflexo::before,
+  .botao-brilho::before {
+    content: "";
+    position: absolute;
+    inset: -40% -70%;
+    z-index: 2;
+    pointer-events: none;
+    background: linear-gradient(
+      72deg,
+      transparent 42%,
+      rgb(220 245 255 / 0.22) 50%,
+      transparent 58%
+    );
+    transform: translateX(-110%);
+  }
+  .botao-brilho::before {
+    z-index: 0;
+    background: linear-gradient(
+      72deg,
+      transparent 40%,
+      rgb(255 255 255 / 0.55) 50%,
+      transparent 60%
+    );
+  }
+  .group:hover .reflexo::before,
+  .botao-brilho:hover::before {
+    transform: translateX(110%);
+    transition: transform 760ms var(--ease-suave);
+  }
+}
+
+/* 2. Faróis: dois fachos acendem na chamada final quando ela chega, com a
+   pequena hesitação de uma lâmpada ligando. Depois ficam acesos, parados. */
+.farol {
+  position: absolute;
+  bottom: -10%;
+  width: 62%;
+  height: 120%;
+  pointer-events: none;
+  opacity: 1;
+  background: radial-gradient(
+    ellipse 60% 70% at 50% 100%,
+    rgb(111 230 255 / 0.2),
+    rgb(34 201 232 / 0.07) 45%,
+    transparent 72%
+  );
+  clip-path: polygon(44% 100%, 56% 100%, 100% 0, 0 0);
+}
+.farol-esq {
+  left: -12%;
+  transform: rotate(16deg);
+  transform-origin: 50% 100%;
+}
+.farol-dir {
+  right: -12%;
+  transform: rotate(-16deg);
+  transform-origin: 50% 100%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  [data-revelar="aguardando"] .farol {
+    opacity: 0;
+  }
+  [data-revelar="visivel"] .farol {
+    animation: farol-acende 1400ms linear both;
+  }
+  [data-revelar="visivel"] .farol-dir {
+    animation-delay: 160ms;
+  }
+}
+
+@keyframes farol-acende {
+  0% {
+    opacity: 0;
+  }
+  8% {
+    opacity: 0.7;
+  }
+  14% {
+    opacity: 0.15;
+  }
+  22% {
+    opacity: 0.85;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* 4. Linha de progresso no cabeçalho: cresce conforme a página rola.
+   Animação guiada pela rolagem, sem JavaScript. Onde o navegador não
+   suporta, a linha simplesmente não aparece. */
+.progresso {
+  display: none;
+}
+@supports (animation-timeline: scroll()) {
+  .progresso {
+    display: block;
+    transform-origin: left center;
+    transform: scaleX(0);
+    animation: progresso linear both;
+    animation-timeline: scroll(root block);
+  }
+}
+@keyframes progresso {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* 6. Um único anel no botão flutuante, seis segundos depois de abrir a
+   página, para mostrar onde está o contato. Não se repete. */
+@media (prefers-reduced-motion: no-preference) {
+  .anel-unico::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    border: 2px solid var(--color-marca);
+    pointer-events: none;
+    opacity: 0;
+    animation: anel 1300ms var(--ease-saida) 6s 1 both;
+  }
+}
+@keyframes anel {
+  0% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.55);
+  }
+}
+
+/* 5. Foto vira vídeo: a mídia do card se expande até o painel. */
+::view-transition-group(midia-servico) {
+  animation-duration: 460ms;
+  animation-timing-function: var(--ease-in-out-forte);
+}
+::view-transition-old(midia-servico),
+::view-transition-new(midia-servico) {
+  height: 100%;
+  object-fit: cover;
+  overflow: clip;
+}
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 260ms;
+}
+
+/* Durante a transição "foto vira vídeo", o painel não roda a própria
+   entrada: quem anima é a View Transition. Evita dois movimentos somados. */
+html:active-view-transition .lightbox,
+html:active-view-transition .lightbox-painel {
+  animation: none;
+}

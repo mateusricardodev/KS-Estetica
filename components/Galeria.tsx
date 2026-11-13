@@ -103,50 +103,51 @@ export function Galeria() {
         </Revelar>
 
         {/* Grade fechada: 20 itens em 2, 4 e 5 colunas, sem célula vazia. */}
-        <Revelar atraso={100} className="mt-12">
+        <div className="mt-12">
           <div className="grid grid-cols-2 gap-2.5 sm:gap-3 md:grid-cols-4 lg:grid-cols-5">
             {ordem.map((item, indice) => (
-              <button
-                key={item.id}
-                type="button"
-                ref={(no) => {
-                  gatilhos.current[indice] = no;
-                }}
-                onClick={() => setAberta(indice)}
-                aria-label={`${item.tipo === "video" ? "Assistir vídeo" : "Ampliar foto"}: ${descricao(item)}`}
-                className="placa group relative block aspect-[3/4] w-full cursor-zoom-in transition-transform duration-300 ease-[var(--ease-saida)] active:scale-[0.985]"
-              >
-                {item.tipo === "foto" ? (
-                  <Foto
-                    foto={fotos[item.id]}
-                    sizes="(min-width: 1024px) 19vw, (min-width: 768px) 24vw, 47vw"
-                    preencher
-                    posicao="center 45%"
-                    className="transition-[transform,filter] duration-500 ease-[var(--ease-saida)] group-hover:scale-[1.05] group-hover:brightness-110"
-                  />
-                ) : (
-                  <>
-                    <img
-                      src={videos[item.id].poster}
-                      width={videos[item.id].largura}
-                      height={videos[item.id].altura}
-                      alt=""
-                      loading="lazy"
-                      decoding="async"
-                      className="absolute inset-0 h-full w-full object-cover transition-[transform,filter] duration-500 ease-[var(--ease-saida)] group-hover:scale-[1.05] group-hover:brightness-110"
+              <Revelar key={item.id} atraso={(indice % 5) * 55}>
+                <button
+                  type="button"
+                  ref={(no) => {
+                    gatilhos.current[indice] = no;
+                  }}
+                  onClick={() => setAberta(indice)}
+                  aria-label={`${item.tipo === "video" ? "Assistir vídeo" : "Ampliar foto"}: ${descricao(item)}`}
+                  className="placa group relative block aspect-[3/4] w-full cursor-zoom-in transition-transform duration-300 ease-[var(--ease-saida)] active:scale-[0.985]"
+                >
+                  {item.tipo === "foto" ? (
+                    <Foto
+                      foto={fotos[item.id]}
+                      sizes="(min-width: 1024px) 19vw, (min-width: 768px) 24vw, 47vw"
+                      preencher
+                      posicao="center 45%"
+                      className="transition-[transform,filter] duration-500 ease-[var(--ease-saida)] group-hover:scale-[1.05] group-hover:brightness-110"
                     />
-                    <span
-                      aria-hidden
-                      className="absolute bottom-3 left-3 z-[2] inline-flex size-10 items-center justify-center rounded-full bg-breu/70 text-texto backdrop-blur-sm"
-                    >
-                      <Play size={18} weight="fill" />
-                    </span>
-                  </>
-                )}
-              </button>
+                  ) : (
+                    <>
+                      <img
+                        src={videos[item.id].poster}
+                        width={videos[item.id].largura}
+                        height={videos[item.id].altura}
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                        className="absolute inset-0 h-full w-full object-cover transition-[transform,filter] duration-500 ease-[var(--ease-saida)] group-hover:scale-[1.05] group-hover:brightness-110"
+                      />
+                      <span
+                        aria-hidden
+                        className="absolute bottom-3 left-3 z-[2] inline-flex size-10 items-center justify-center rounded-full bg-breu/70 text-texto backdrop-blur-sm"
+                      >
+                        <Play size={18} weight="fill" />
+                      </span>
+                    </>
+                  )}
+                </button>
+              </Revelar>
             ))}
           </div>
-        </Revelar>
+        </div>
       </div>
 
       {itemAtual && aberta !== null && (
